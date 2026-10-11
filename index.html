@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABD Toolkit - Pro Mobile Dashboard</title>
     <style>
-        /* CSS Reset & Universal Styling */
+        /* Universal & Dark Theme Setup */
         * {
             margin: 0;
             padding: 0;
@@ -156,7 +156,7 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* Top Header */
+        /* Header */
         .app-header {
             display: flex;
             justify-content: space-between;
@@ -204,7 +204,7 @@
             display: block;
         }
 
-        /* APKS Grid Layout */
+        /* APKs Grid Layout */
         .apks-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -259,7 +259,7 @@
             color: #ffffff;
         }
 
-        /* Courses List Layout */
+        /* Courses Layout */
         .course-card {
             display: flex;
             align-items: center;
@@ -311,7 +311,7 @@
             font-weight: bold;
         }
 
-        /* Profile Section */
+        /* Profile Layout */
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -340,7 +340,106 @@
             font-size: 12px;
         }
 
-        /* Bottom Navigation Bar */
+        /* -----------------------------------------
+           PREMIUM SECTION SUBSCRIPTION CARDS
+           ----------------------------------------- */
+        .plans-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 10px 0;
+        }
+
+        .plan-card {
+            background-color: #161f2c;
+            border: 1px solid #223046;
+            border-radius: 14px;
+            padding: 18px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-3px);
+            border-color: #00b0ff;
+        }
+
+        .plan-card.featured {
+            border: 2px solid #00b0ff;
+            background-color: #132238;
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background-color: #00b0ff;
+            color: #000;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .plan-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .plan-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00b0ff;
+            margin-bottom: 12px;
+        }
+
+        .plan-price span {
+            font-size: 12px;
+            color: #8c9ba5;
+            font-weight: normal;
+        }
+
+        .payment-info {
+            background-color: #0f1622;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #1a273a;
+            font-size: 12px;
+            color: #8c9ba5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-icon {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            background-color: #25D366; /* WhatsApp Green */
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: #1ebd56;
+        }
+
+        /* Bottom Nav */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -381,9 +480,7 @@
 </head>
 <body>
 
-    <!-- =========================================
-       1. LOADER SCREEN HTML (Updated with your artwork)
-       ========================================= -->
+    <!-- Loader Screen -->
     <div id="loader">
         <div class="loader-container">
             <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Logo" class="logo-img">
@@ -392,9 +489,7 @@
         <div class="loader-text">ABD Toolkit Loading...</div>
     </div>
 
-    <!-- =========================================
-       2. VERIFICATION GATE HTML
-       ========================================= -->
+    <!-- Verification Gate -->
     <div id="verification">
         <h2>Verification Required</h2>
         <p>Please follow our TikTok account and join the WhatsApp group to unlock full access to the toolkit.</p>
@@ -412,12 +507,10 @@
         </button>
     </div>
 
-    <!-- =========================================
-       3. MAIN DASHBOARD CONTENT HTML
-       ========================================= -->
+    <!-- Main Dashboard -->
     <div id="content">
         
-        <!-- Top Header with Customer Service WhatsApp Link -->
+        <!-- Header -->
         <div class="app-header">
             <div class="app-brand">ABD Toolkit</div>
             <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit%20Customer%20Service" target="_blank" class="menu-btn" title="Customer Service">☰ Service</a>
@@ -431,19 +524,17 @@
             </div>
         </div>
 
-        <!-- Tab 2: APKs (Default Active Tab) -->
+        <!-- Tab 2: APKs (Default Active) -->
         <div id="tab-apks" class="tab-content active">
             <div class="section-header">APKS & WEB APPS</div>
             <div class="apks-grid">
                 
-                <!-- CapCut Pro APK Card -->
                 <a href="https://www.mediafire.com/file/4on3xzbykjcwyco/razatoolkit_CapCut.apk/file" target="_blank" class="apk-card">
                     <span class="apk-badge">APK/APP</span>
                     <img src="https://i.ibb.co/k2c525tM/Screenshot-20261011-020158.png" alt="CapCut Pro" class="apk-icon">
                     <div class="apk-name">CapCut Pro</div>
                 </a>
 
-                <!-- Picsart Pro APK Card -->
                 <a href="https://www.mediafire.com/file/5zal530p95un6ka/Picsart.apk/file" target="_blank" class="apk-card">
                     <span class="apk-badge">APK/APP</span>
                     <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Picsart Pro" class="apk-icon">
@@ -458,7 +549,6 @@
             <div class="section-header">COURSES & TUTORIALS</div>
             <div style="padding-top: 10px;">
                 
-                <!-- Course 1 -->
                 <a href="https://youtu.be/ONGScQp93Go?si=owaRmonoe9YdRRJj" target="_blank" class="course-card">
                     <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb">
                     <div class="course-info">
@@ -468,7 +558,6 @@
                     <div class="course-arrow">›</div>
                 </a>
 
-                <!-- Course 2 -->
                 <a href="https://youtu.be/_DVar9j_Iac?si=3mWVyBc2IFySn4Ba" target="_blank" class="course-card">
                     <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb">
                     <div class="course-info">
@@ -478,7 +567,6 @@
                     <div class="course-arrow">›</div>
                 </a>
 
-                <!-- Course 3 -->
                 <a href="https://youtu.be/jGjOqMsHRSg?si=o-4q6hHTwqHwNMUi" target="_blank" class="course-card">
                     <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb">
                     <div class="course-info">
@@ -502,17 +590,53 @@
             </div>
         </div>
 
-        <!-- Tab 5: Premium -->
+        <!-- Tab 5: Premium Section with 3 Subscription Boxes -->
         <div id="tab-premium" class="tab-content">
-            <div class="section-header">PREMIUM SECTION</div>
-            <div style="padding: 40px 20px; color: #8c9ba5; text-align: center;">
-                <p>Unlock premium features and tools soon!</p>
+            <div class="section-header">PREMIUM SUBSCRIPTION PLANS</div>
+            
+            <div class="plans-container">
+                
+                <!-- Box 1: Yearly Plan -->
+                <div class="plan-card featured">
+                    <span class="plan-badge">BEST VALUE</span>
+                    <div class="plan-title">Yearly Membership</div>
+                    <div class="plan-price">Rs. 2,000 <span>/ year</span></div>
+                    <div class="payment-info">
+                        <span class="payment-icon">✓</span> Payment Method: <strong>Easypaisa</strong>
+                    </div>
+                    <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit!%20I%20want%20to%20buy%20the%20Yearly%20Plan%20(Rs.%202000)%20via%20Easypaisa." target="_blank" class="buy-btn">
+                        Buy Yearly Pass
+                    </a>
+                </div>
+
+                <!-- Box 2: Monthly Plan -->
+                <div class="plan-card">
+                    <div class="plan-title">Monthly Membership</div>
+                    <div class="plan-price">Rs. 1,000 <span>/ month</span></div>
+                    <div class="payment-info">
+                        <span class="payment-icon">✓</span> Payment Method: <strong>Easypaisa</strong>
+                    </div>
+                    <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit!%20I%20want%20to%20buy%20the%20Monthly%20Plan%20(Rs.%201000)%20via%20Easypaisa." target="_blank" class="buy-btn">
+                        Buy Monthly Pass
+                    </a>
+                </div>
+
+                <!-- Box 3: Weekly Plan -->
+                <div class="plan-card">
+                    <div class="plan-title">Weekly Membership</div>
+                    <div class="plan-price">Rs. 500 <span>/ week</span></div>
+                    <div class="payment-info">
+                        <span class="payment-icon">✓</span> Payment Method: <strong>Easypaisa</strong>
+                    </div>
+                    <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit!%20I%20want%20to%20buy%20the%20Weekly%20Plan%20(Rs.%20500)%20via%20Easypaisa." target="_blank" class="buy-btn">
+                        Buy Weekly Pass
+                    </a>
+                </div>
+
             </div>
         </div>
 
-        <!-- =========================================
-           4. BOTTOM NAVIGATION BAR HTML
-           ========================================= -->
+        <!-- Bottom Navigation Bar -->
         <div class="bottom-nav">
             <div class="nav-item" onclick="switchTab('tools', this)">
                 <span class="nav-icon">🛠️</span>
@@ -538,11 +662,9 @@
 
     </div>
 
-    <!-- =========================================
-       5. JAVASCRIPT LOGIC
-       ========================================= -->
+    <!-- JavaScript Logic -->
     <script>
-        // Loader automatic transition to verification gate after 3 seconds
+        // Loader transition
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const loader = document.getElementById('loader');
@@ -554,7 +676,7 @@
             }, 3000);
         });
         
-        // Verification count tracking for TikTok & WhatsApp
+        // Verification logic
         let verifiedCount = 0;
         function checkVerification() {
             verifiedCount++;
@@ -563,31 +685,24 @@
             }
         }
         
-        // Transition from Verification Gate to Main Dashboard Content
+        // Show Content
         function showContent() {
             document.getElementById('verification').style.display = 'none';
             document.getElementById('content').style.display = 'flex';
         }
 
-        // Tab Switching Logic for Bottom Navigation (Type-safe parameters)
-        /**
-         * @param {string} tabName
-         * @param {HTMLElement} element
-         */
+        // Tab Switching logic
         function switchTab(tabName, element) {
-            // Hide all tab contents
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Remove active class from all nav items
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
             });
             
-            // Activate selected tab and nav item
             const targetTab = document.getElementById('tab-' + tabName);
             if (targetTab) {
                 targetTab.classList.add('active');
@@ -596,10 +711,8 @@
                 element.classList.add('active');
             }
             
-            // Scroll to top when switching tabs
             window.scrollTo(0, 0);
         }
     </script>
 </body>
-    </html>
-    
+</html>
