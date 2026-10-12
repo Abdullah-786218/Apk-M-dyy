@@ -19,6 +19,10 @@
             flex-direction: column;
             align-items: center;
         }
+        
+        /* -----------------------------------------
+           NEW ROTATING RINGS LOADER WITH EMOJI
+           ----------------------------------------- */
         #loader {
             display: flex;
             flex-direction: column;
@@ -35,34 +39,53 @@
         }
         .loader-container {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        .logo-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
+        .emoji-center {
+            font-size: 45px;
+            z-index: 10;
+            animation: pulseEmoji 1.5s infinite ease-in-out;
+        }
+        @keyframes pulseEmoji {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .ring {
             position: absolute;
-            z-index: 2;
-            border: 4px solid #0b0f17;
-            box-shadow: 0 0 20px rgba(0, 176, 255, 0.4);
-        }
-        .spinner {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 5px solid rgba(255, 255, 255, 0.08);
-            border-top: 5px solid #00b0ff;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            z-index: 1;
+            border: 3px solid transparent;
         }
-        @keyframes spin {
+        .ring-1 {
+            width: 140px;
+            height: 140px;
+            border-top-color: #00b0ff;
+            border-bottom-color: #00b0ff;
+            animation: spinRing1 1.2s linear infinite;
+        }
+        .ring-2 {
+            width: 110px;
+            height: 110px;
+            border-left-color: #ff007f;
+            border-right-color: #ff007f;
+            animation: spinRing2 0.9s linear infinite reverse;
+        }
+        .ring-3 {
+            width: 80px;
+            height: 80px;
+            border-top-color: #00ff88;
+            border-bottom-color: #00ff88;
+            animation: spinRing1 1.5s linear infinite;
+        }
+        @keyframes spinRing1 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes spinRing2 {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
@@ -72,6 +95,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
         #verification {
             display: none;
             text-align: center;
@@ -408,13 +432,17 @@
     </style>
 </head>
 <body>
+    <!-- 3 Rotating Rings Loader with 🥶 Emoji -->
     <div id="loader">
         <div class="loader-container">
-            <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Logo" class="logo-img" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
-            <div class="spinner"></div>
+            <div class="emoji-center">🥶</div>
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
         </div>
         <div class="loader-text">ABD Toolkit Loading...</div>
     </div>
+
     <div id="verification">
         <h2>Verification Required</h2>
         <p>Please follow our TikTok account and join the WhatsApp group to unlock full access to the toolkit.</p>
@@ -422,6 +450,7 @@
         <a href="https://chat.whatsapp.com/CsH0YmUPwsYJRvbRZVceaR?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="btn" onclick="checkVerification()">2. Join WhatsApp Group</a>
         <button id="access-btn" class="btn btn-success" style="display:none;" onclick="showContent()">Access Website Now</button>
     </div>
+
     <div id="content">
         <div class="app-header">
             <div class="app-brand">ABD Toolkit</div>
@@ -453,11 +482,12 @@
                 </a>
             </div>
     </div>
-            <div id="tab-courses" class="tab-content">
+            <!-- Courses with Official YouTube Thumbnails -->
+        <div id="tab-courses" class="tab-content">
             <div class="section-header">COURSES & TUTORIALS</div>
             <div style="padding-top: 10px;">
                 <a href="https://youtu.be/ONGScQp93Go?si=owaRmonoe9YdRRJj" target="_blank" class="course-card">
-                    <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <img src="https://img.youtube.com/vi/ONGScQp93Go/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 1 - Basics</div>
                         <div class="course-type">Video Tutorial</div>
@@ -465,7 +495,7 @@
                     <div class="course-arrow">›</div>
                 </a>
                 <a href="https://youtu.be/_DVar9j_Iac?si=3mWVyBc2IFySn4Ba" target="_blank" class="course-card">
-                    <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <img src="https://img.youtube.com/vi/_DVar9j_Iac/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 2 - Overlays</div>
                         <div class="course-type">Video Tutorial</div>
@@ -473,7 +503,7 @@
                     <div class="course-arrow">›</div>
                 </a>
                 <a href="https://youtu.be/jGjOqMsHRSg?si=o-4q6hHTwqHwNMUi" target="_blank" class="course-card">
-                    <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <img src="https://img.youtube.com/vi/jGjOqMsHRSg/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 3 - Keyframing</div>
                         <div class="course-type">Video Tutorial</div>
@@ -482,6 +512,7 @@
                 </a>
             </div>
         </div>
+        
         <div id="tab-profile" class="tab-content">
             <div class="section-header">PROFILE</div>
             <div class="profile-container">
@@ -491,6 +522,7 @@
                 <p style="margin-top: 8px; color: #00b0ff;">Managed by Abdullah</p>
             </div>
         </div>
+
         <div id="tab-premium" class="tab-content">
             <div class="section-header">PREMIUM SUBSCRIPTION PLANS</div>
             <div class="plans-container">
@@ -521,6 +553,7 @@
                 </div>
             </div>
         </div>
+
         <div class="bottom-nav">
             <div class="nav-item" onclick="switchTab('tools', this)">
                 <span class="nav-icon">🛠️</span>
@@ -544,6 +577,7 @@
             </div>
         </div>
     </div>
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -555,6 +589,7 @@
                 }, 500);
             }, 3000);
         });
+        
         let verifiedCount = 0;
         function checkVerification() {
             verifiedCount++;
@@ -562,19 +597,23 @@
                 document.getElementById('access-btn').style.display = 'block';
             }
         }
+        
         function showContent() {
             document.getElementById('verification').style.display = 'none';
             document.getElementById('content').style.display = 'flex';
         }
+
         function switchTab(tabName, element) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
             });
+            
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
             });
+            
             const targetTab = document.getElementById('tab-' + tabName);
             if (targetTab) {
                 targetTab.classList.add('active');
@@ -582,9 +621,10 @@
             if (element) {
                 element.classList.add('active');
             }
+            
             window.scrollTo(0, 0);
         }
     </script>
 </body>
-    </html>
+                </html>
     
