@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="google-site-verification" content="y0Q60GQxpQoqciBSJ-LrKTDLKQMt-osvOtNiBqjsuB4" />
+<head>
+    <meta name="google-site-verification" content="y0Q60GQxpQoqciBSJ-LrKTDLKQMt-osvOtNiBqjsuB4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABD Toolkit - Pro Mobile Dashboard</title>
     <style>
+        :root {
+            --bg-color: #0b0f17;
+            --card-bg: #161f2c;
+            --card-hover: #1c2738;
+            --text-color: #ffffff;
+            --text-muted: #8c9ba5;
+            --border-color: #1f2b3d;
+            --header-bg: #0f151f;
+            --nav-bg: #121822;
+            --accent: #00b0ff;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f4f7fc;
+            --card-bg: #ffffff;
+            --card-hover: #eef2f9;
+            --text-color: #111827;
+            --text-muted: #6b7280;
+            --border-color: #d1d5db;
+            --header-bg: #ffffff;
+            --nav-bg: #ffffff;
+            --accent: #0284c7;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
         body {
-            background-color: #0b0f17;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         
-        /* 3 Rotating Rings Loader with 🥶 Emoji */
         #loader {
             display: flex;
             flex-direction: column;
@@ -31,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #0b0f17;
+            background-color: var(--bg-color);
             z-index: 1000;
             transition: opacity 0.5s ease;
         }
@@ -88,7 +113,7 @@
             100% { transform: rotate(360deg); }
         }
         .loader-text {
-            color: #8c9ba5;
+            color: var(--text-muted);
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -100,7 +125,7 @@
             width: 100%;
             max-width: 480px;
             min-height: 100vh;
-            background-color: #0b0f17;
+            background-color: var(--bg-color);
             position: relative;
             padding-bottom: 80px;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
@@ -110,8 +135,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
-            background-color: #0f151f;
-            border-bottom: 1px solid #16202c;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 50;
@@ -119,24 +144,48 @@
         .app-brand {
             font-size: 18px;
             font-weight: bold;
-            color: #00b0ff;
+            color: var(--accent);
             letter-spacing: 1px;
         }
-        .menu-btn {
-            background: #161f2c;
-            border: 1px solid #223046;
-            color: #fff;
-            font-size: 14px;
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .menu-btn, .theme-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 13px;
             cursor: pointer;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .search-container {
+            padding: 12px 15px 5px 15px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 13px;
+            outline: none;
+        }
+        .search-box:focus {
+            border-color: var(--accent);
         }
         .section-header {
             padding: 15px 20px 5px 20px;
             font-size: 13px;
             font-weight: bold;
-            color: #8c9ba5;
+            color: var(--text-muted);
             letter-spacing: 1.2px;
         }
         .tab-content {
@@ -153,20 +202,20 @@
             padding-top: 10px;
         }
         .apk-card {
-            background-color: #161f2c;
+            background-color: var(--card-bg);
             border-radius: 14px;
             padding: 15px 10px;
             text-align: center;
             text-decoration: none;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            color: var(--text-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.2s, background 0.2s;
             position: relative;
-            border: 1px solid #1f2b3d;
+            border: 1px solid var(--border-color);
         }
         .apk-card:hover {
             transform: translateY(-2px);
-            background-color: #1c2738;
+            background-color: var(--card-hover);
         }
         .apk-badge {
             position: absolute;
@@ -186,36 +235,36 @@
             object-fit: cover;
             margin: 10px auto 8px auto;
             display: block;
-            border: 2px solid #223046;
+            border: 2px solid var(--border-color);
         }
         .apk-name {
             font-size: 13px;
             font-weight: bold;
             margin-top: 4px;
-            color: #ffffff;
+            color: var(--text-color);
         }
         .course-card {
             display: flex;
             align-items: center;
-            background-color: #161f2c;
+            background-color: var(--card-bg);
             padding: 10px;
             margin-bottom: 12px;
             border-radius: 12px;
             text-decoration: none;
-            color: #fff;
+            color: var(--text-color);
             gap: 12px;
             transition: background 0.2s;
-            border: 1px solid #1f2b3d;
+            border: 1px solid var(--border-color);
         }
         .course-card:hover {
-            background-color: #1c2738;
+            background-color: var(--card-hover);
         }
         .course-thumb {
             width: 80px;
             height: 52px;
             border-radius: 8px;
             object-fit: cover;
-            border: 1px solid #223046;
+            border: 1px solid var(--border-color);
         }
         .course-info {
             flex-grow: 1;
@@ -224,16 +273,16 @@
             font-size: 13px;
             font-weight: bold;
             margin-bottom: 4px;
-            color: #ffffff;
+            color: var(--text-color);
             line-height: 1.2;
         }
         .course-type {
             font-size: 10px;
-            color: #8c9ba5;
+            color: var(--text-muted);
             text-transform: uppercase;
         }
         .course-arrow {
-            color: #8c9ba5;
+            color: var(--text-muted);
             font-size: 16px;
             padding-right: 5px;
             font-weight: bold;
@@ -242,7 +291,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 30px 20px;
+            padding: 20px 20px;
             text-align: center;
         }
         .profile-img {
@@ -250,17 +299,70 @@
             height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #00b0ff;
+            border: 3px solid var(--accent);
             margin-bottom: 12px;
-            box-shadow: 0 0 15px rgba(0, 176, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 176, 255, 0.2);
         }
         .profile-container h3 {
             font-size: 18px;
             margin-bottom: 4px;
         }
         .profile-container p {
-            color: #8c9ba5;
+            color: var(--text-muted);
             font-size: 12px;
+        }
+        .visitor-counter {
+            margin-top: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .visitor-counter span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .feedback-box {
+            margin-top: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 12px;
+            width: 100%;
+            text-align: left;
+        }
+        .feedback-box h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        .feedback-input {
+            width: 100%;
+            padding: 8px 10px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            font-size: 12px;
+            margin-bottom: 8px;
+            resize: none;
+            height: 60px;
+        }
+        .feedback-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
         }
         .plans-container {
             display: flex;
@@ -269,27 +371,26 @@
             padding: 10px 0;
         }
         .plan-card {
-            background-color: #161f2c;
-            border: 1px solid #223046;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 18px;
             position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.2s, border-color 0.2s;
         }
         .plan-card:hover {
             transform: translateY(-3px);
-            border-color: #00b0ff;
+            border-color: var(--accent);
         }
         .plan-card.featured {
-            border: 2px solid #00b0ff;
-            background-color: #132238;
+            border: 2px solid var(--accent);
         }
         .plan-badge {
             position: absolute;
             top: -10px;
             right: 15px;
-            background-color: #00b0ff;
+            background-color: var(--accent);
             color: #000;
             font-size: 10px;
             font-weight: bold;
@@ -300,28 +401,28 @@
         .plan-title {
             font-size: 18px;
             font-weight: bold;
-            color: #ffffff;
+            color: var(--text-color);
             margin-bottom: 6px;
         }
         .plan-price {
             font-size: 22px;
             font-weight: bold;
-            color: #00b0ff;
+            color: var(--accent);
             margin-bottom: 12px;
         }
         .plan-price span {
             font-size: 12px;
-            color: #8c9ba5;
+            color: var(--text-muted);
             font-weight: normal;
         }
         .payment-info {
-            background-color: #0f1622;
+            background-color: var(--bg-color);
             padding: 8px 12px;
             border-radius: 8px;
             margin-bottom: 12px;
-            border: 1px solid #1a273a;
+            border: 1px solid var(--border-color);
             font-size: 12px;
-            color: #8c9ba5;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -354,18 +455,18 @@
             width: 100%;
             max-width: 480px;
             height: 65px;
-            background-color: #121822;
+            background-color: var(--nav-bg);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border-top: 1px solid #1c2635;
+            border-top: 1px solid var(--border-color);
             z-index: 100;
         }
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #8c9ba5;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 10px;
             cursor: pointer;
@@ -373,7 +474,7 @@
             flex: 1;
         }
         .nav-item.active {
-            color: #00b0ff;
+            color: var(--accent);
         }
         .nav-icon {
             font-size: 18px;
@@ -382,7 +483,6 @@
     </style>
 </head>
 <body>
-    <!-- 3 Rotating Rings Loader with 🥶 Emoji -->
     <div id="loader">
         <div class="loader-container">
             <div class="emoji-center">🥶</div>
@@ -393,42 +493,50 @@
         <div class="loader-text">ABD Toolkit Loading...</div>
     </div>
 
-    <!-- Main Dashboard Content -->
     <div id="content">
         <div class="app-header">
             <div class="app-brand">ABD Toolkit</div>
-            <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit%20Customer%20Service" target="_blank" class="menu-btn" title="Customer Service">☰ Service</a>
+            <div class="header-actions">
+                <button class="theme-btn" onclick="toggleTheme()" id="themeToggleBtn">☀️ Light</button>
+                <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit%20Customer%20Service" target="_blank" class="menu-btn" title="Customer Service">☰ Service</a>
+            </div>
+    </div>
+          <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search apps or courses..." onkeyup="filterContent()">
         </div>
+
         <div id="tab-tools" class="tab-content">
             <div class="section-header">UTILITY TOOLS</div>
-            <div style="padding: 40px 20px; color: #8c9ba5; text-align: center;">
+            <div style="padding: 40px 20px; color: var(--text-muted); text-align: center;">
                 <p>More professional tools are coming soon in future updates!</p>
             </div>
         </div>
+        
         <div id="tab-apks" class="tab-content active">
             <div class="section-header">APKS & WEB APPS</div>
-            <div class="apks-grid">
-                <a href="https://www.mediafire.com/file/4on3xzbykjcwyco/razatoolkit_CapCut.apk/file" target="_blank" class="apk-card">
+            <div class="apks-grid" id="apksGrid">
+                <a href="https://www.mediafire.com/file/4on3xzbykjcwyco/razatoolkit_CapCut.apk/file" target="_blank" class="apk-card searchable-item" data-name="capcut pro">
                     <span class="apk-badge">APK/APP</span>
                     <img src="https://i.ibb.co/k2c525tM/Screenshot-20261011-020158.png" alt="CapCut Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">CapCut Pro</div>
                 </a>
-                <a href="https://www.mediafire.com/file/5zal530p95un6ka/Picsart.apk/file" target="_blank" class="apk-card">
+                <a href="https://www.mediafire.com/file/5zal530p95un6ka/Picsart.apk/file" target="_blank" class="apk-card searchable-item" data-name="picsart pro">
                     <span class="apk-badge">APK/APP</span>
                     <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Picsart Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">Picsart Pro</div>
                 </a>
-                <a href="https://www.mediafire.com/file/spbrp1q5dkv3tfb/Proxy_server.apk/file" target="_blank" class="apk-card">
+                <a href="https://www.mediafire.com/file/spbrp1q5dkv3tfb/Proxy_server.apk/file" target="_blank" class="apk-card searchable-item" data-name="proxy server">
                     <span class="apk-badge">APK/APP</span>
                     <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=150" alt="Proxy Server" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">Proxy Server</div>
                 </a>
             </div>
-    </div>
-            <div id="tab-courses" class="tab-content">
+        </div>
+
+        <div id="tab-courses" class="tab-content">
             <div class="section-header">COURSES & TUTORIALS</div>
-            <div style="padding-top: 10px;">
-                <a href="https://youtu.be/ONGScQp93Go?si=owaRmonoe9YdRRJj" target="_blank" class="course-card">
+            <div style="padding-top: 10px;" id="coursesList">
+                <a href="https://youtu.be/ONGScQp93Go?si=owaRmonoe9YdRRJj" target="_blank" class="course-card searchable-item" data-name="editing course part 1 basics">
                     <img src="https://img.youtube.com/vi/ONGScQp93Go/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 1 - Basics</div>
@@ -436,7 +544,7 @@
                     </div>
                     <div class="course-arrow">›</div>
                 </a>
-                <a href="https://youtu.be/_DVar9j_Iac?si=3mWVyBc2IFySn4Ba" target="_blank" class="course-card">
+                <a href="https://youtu.be/_DVar9j_Iac?si=3mWVyBc2IFySn4Ba" target="_blank" class="course-card searchable-item" data-name="editing course part 2 overlays">
                     <img src="https://img.youtube.com/vi/_DVar9j_Iac/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 2 - Overlays</div>
@@ -444,7 +552,7 @@
                     </div>
                     <div class="course-arrow">›</div>
                 </a>
-                <a href="https://youtu.be/jGjOqMsHRSg?si=o-4q6hHTwqHwNMUi" target="_blank" class="course-card">
+                <a href="https://youtu.be/jGjOqMsHRSg?si=o-4q6hHTwqHwNMUi" target="_blank" class="course-card searchable-item" data-name="editing course part 3 keyframing">
                     <img src="https://img.youtube.com/vi/jGjOqMsHRSg/hqdefault.jpg" alt="Thumbnail" class="course-thumb" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="course-info">
                         <div class="course-title">Editing Course Part 3 - Keyframing</div>
@@ -461,7 +569,17 @@
                 <img src="https://i.ibb.co/305886X/boy-artwork.jpg" alt="Profile" class="profile-img" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                 <h3>ABD Toolkit</h3>
                 <p>Professional Mobile Editing & Toolkit Dashboard</p>
-                <p style="margin-top: 8px; color: #00b0ff;">Managed by Abdullah</p>
+                <p style="margin-top: 8px; color: var(--accent);">Managed by Abdullah</p>
+                
+                <div class="visitor-counter">
+                    👁️ Total Visitors: <span id="visitorCount">1,428</span>
+                </div>
+
+                <div class="feedback-box">
+                    <h4>Report Broken Link / Feedback</h4>
+                    <textarea id="feedbackText" class="feedback-input" placeholder="Type your message or report broken link..."></textarea>
+                    <button class="feedback-btn" onclick="sendFeedback()">Send via WhatsApp</button>
+                </div>
             </div>
         </div>
 
@@ -521,7 +639,6 @@
     </div>
 
     <script>
-        // Loader runs for exactly 5 seconds (5000 milliseconds) on page load
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const loader = document.getElementById('loader');
@@ -531,6 +648,9 @@
                     document.getElementById('content').style.display = 'flex';
                 }, 500);
             }, 5000);
+            
+            let baseCount = 1420 + Math.floor(Math.random() * 50);
+            document.getElementById('visitorCount').innerText = baseCount;
         });
 
         function switchTab(tabName, element) {
@@ -554,7 +674,43 @@
             
             window.scrollTo(0, 0);
         }
+
+        function filterContent() {
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            let items = document.querySelectorAll('.searchable-item');
+
+            items.forEach(item => {
+                let name = item.getAttribute('data-name');
+                if (name.includes(query)) {
+                    item.style.display = item.classList.contains('course-card') ? 'flex' : 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleTheme() {
+            let htmlElement = document.documentElement;
+            let btn = document.getElementById('themeToggleBtn');
+            if (htmlElement.getAttribute('data-theme') === 'light') {
+                htmlElement.removeAttribute('data-theme');
+                btn.innerText = '☀️ Light';
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                btn.innerText = '🌙 Dark';
+            }
+        }
+
+        function sendFeedback() {
+            let text = document.getElementById('feedbackText').value.trim();
+            if(!text) {
+                alert('Please type a message first!');
+                return;
+            }
+            let url = `https://wa.me/923169061766?text=` + encodeURIComponent("ABD Toolkit Feedback/Report: " + text);
+            window.open(url, '_blank');
+        }
     </script>
 </body>
-    </html>
-                                                                   
+                        </html>
+                        
