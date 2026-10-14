@@ -288,6 +288,86 @@
             padding-right: 5px;
             font-weight: bold;
         }
+        
+        /* Separate Tool Boxes Design */
+        .tool-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .tool-box h3 {
+            font-size: 15px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tool-input {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 13px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .tool-input:focus {
+            border-color: var(--accent);
+        }
+        .tool-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+        .tool-btn:hover {
+            opacity: 0.9;
+        }
+        .tool-result {
+            margin-top: 12px;
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            display: none;
+        }
+        .output-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .output-item:last-child {
+            border-bottom: none;
+        }
+        .copy-mini-btn {
+            background: var(--card-bg);
+            color: var(--accent);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .copy-mini-btn:hover {
+            background: var(--card-hover);
+        }
+
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -502,14 +582,28 @@
                 <a href="https://wa.me/923169061766?text=Hello%20ABD%20Toolkit%20Customer%20Service" target="_blank" class="menu-btn" title="Customer Service">☰ Service</a>
             </div>
     </div>
-        <div class="search-container">
+            <div class="search-container">
             <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search apps or courses..." onkeyup="filterContent()">
         </div>
 
+        <!-- TOOLS TAB (Alag-alag Boxes ke sath) -->
         <div id="tab-tools" class="tab-content">
-            <div class="section-header">UTILITY TOOLS</div>
-            <div style="padding: 40px 20px; color: var(--text-muted); text-align: center;">
-                <p>More professional tools are coming soon in future updates!</p>
+            <div class="section-header">GAMING & UTILITY TOOLS</div>
+            
+            <!-- Box 1: Stylish Name Generator -->
+            <div class="tool-box">
+                <h3>🎮 Stylish Gaming Name Generator</h3>
+                <input type="text" id="nameInput" class="tool-input" placeholder="Enter your name (e.g. Abdullah)..." autocomplete="off">
+                <button class="tool-btn" onclick="generateNames()">Generate Styles</button>
+                <div id="nameResult" class="tool-result"></div>
+            </div>
+
+            <!-- Box 2: Free Fire Sensitivity Finder -->
+            <div class="tool-box">
+                <h3>🔥 Free Fire Sensitivity Finder</h3>
+                <input type="text" id="phoneInput" class="tool-input" placeholder="Enter phone model (e.g. Samsung, iPhone)..." autocomplete="off">
+                <button class="tool-btn" onclick="findSensitivity()">Get Best Sensitivity</button>
+                <div id="sensResult" class="tool-result"></div>
             </div>
         </div>
         
@@ -697,6 +791,62 @@
             });
         }
 
+        // Stylish Name Generator Logic
+        function generateNames() {
+            let val = document.getElementById('nameInput').value.trim();
+            let resBox = document.getElementById('nameResult');
+            if(!val) {
+                alert('Please enter a name first!');
+                return;
+            }
+            let styles = [
+                `꧁༺ ${val} ༻꧂`,
+                `◥₱ro★${val}★₱ro◤`,
+                `亗 ꜱʏᴍʙᴏʟ ⚡ ${val} 亗`,
+                `꧁🔥 ${val} 🔥꧂`,
+                `𝕯𝖆𝖗𝖐⚡${val}⚡`
+            ];
+            
+            let html = "";
+            styles.forEach(s => {
+                html += `<div class="output-item"><span>${s}</span><button class="copy-mini-btn" onclick="copyText('${s}')">Copy</button></div>`;
+            });
+            resBox.innerHTML = html;
+            resBox.style.display = 'block';
+        }
+
+        // Free Fire Sensitivity Finder Logic
+        function findSensitivity() {
+            let phone = document.getElementById('phoneInput').value.trim().toLowerCase();
+            let resBox = document.getElementById('sensResult');
+            if(!phone) {
+                alert('Please enter your phone model/brand!');
+                return;
+            }
+            
+            let gen = 95, red = 92, s2x = 88, s4x = 90, awm = 50, dpi = 540;
+            if(phone.includes('samsung')) { dpi = 580; gen = 98; }
+            else if(phone.includes('iphone') || phone.includes('apple')) { dpi = 0; gen = 92; red = 89; }
+            else if(phone.includes('oppo') || phone.includes('realme')) { dpi = 600; gen = 96; }
+            else if(phone.includes('vivo')) { dpi = 560; gen = 94; }
+
+            let html = `
+                <div class="output-item"><span>General (Camera):</span> <strong>${gen}</strong></div>
+                <div class="output-item"><span>Red Dot:</span> <strong>${red}</strong></div>
+                <div class="output-item"><span>2X Scope:</span> <strong>${s2x}</strong></div>
+                <div class="output-item"><span>4X Scope:</span> <strong>${s4x}</strong></div>
+                <div class="output-item"><span>AWM Scope:</span> <strong>${awm}</strong></div>
+                <div class="output-item"><span>Recommended DPI:</span> <strong style="color:var(--accent);">${dpi > 0 ? dpi : 'Default (iOS)'}</strong></div>
+            `;
+            resBox.innerHTML = html;
+            resBox.style.display = 'block';
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('Copied to clipboard: ' + text);
+        }
+
         function toggleTheme() {
             let htmlElement = document.documentElement;
             let btn = document.getElementById('themeToggleBtn');
@@ -721,4 +871,4 @@
     </script>
 </body>
     </html>
-                        
+            
