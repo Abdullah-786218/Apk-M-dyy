@@ -236,7 +236,7 @@
             margin: 10px auto 8px auto;
             display: block;
             border: 2px solid var(--border-color);
-            background-color: #0b0f17;
+            background-color: #161f2c;
         }
         .apk-name {
             font-size: 13px;
@@ -288,8 +288,6 @@
             padding-right: 5px;
             font-weight: bold;
         }
-        
-        /* Separate Tool Boxes Design */
         .tool-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -330,10 +328,6 @@
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: opacity 0.2s;
-        }
-        .tool-btn:hover {
-            opacity: 0.9;
         }
         .tool-result {
             margin-top: 12px;
@@ -364,10 +358,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-        .copy-mini-btn:hover {
-            background: var(--card-hover);
-        }
-
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -586,11 +576,10 @@
             <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search apps or courses..." onkeyup="filterContent()">
         </div>
 
-        <!-- TOOLS TAB (Alag-alag Boxes ke sath) -->
+        <!-- TOOLS TAB -->
         <div id="tab-tools" class="tab-content">
             <div class="section-header">GAMING & UTILITY TOOLS</div>
             
-            <!-- Box 1: Stylish Name Generator -->
             <div class="tool-box">
                 <h3>🎮 Stylish Gaming Name Generator</h3>
                 <input type="text" id="nameInput" class="tool-input" placeholder="Enter your name (e.g. Abdullah)..." autocomplete="off">
@@ -598,7 +587,6 @@
                 <div id="nameResult" class="tool-result"></div>
             </div>
 
-            <!-- Box 2: Free Fire Sensitivity Finder -->
             <div class="tool-box">
                 <h3>🔥 Free Fire Sensitivity Finder</h3>
                 <input type="text" id="phoneInput" class="tool-input" placeholder="Enter phone model (e.g. Samsung, iPhone)..." autocomplete="off">
@@ -607,28 +595,55 @@
             </div>
         </div>
         
+        <!-- APKS TAB (All Pro Apps Added) -->
         <div id="tab-apks" class="tab-content active">
             <div class="section-header">APKS & WEB APPS</div>
             <div class="apks-grid" id="apksGrid">
                 <!-- CapCut Pro -->
                 <a href="https://www.mediafire.com/file/4on3xzbykjcwyco/razatoolkit_CapCut.apk/file" target="_blank" class="apk-card searchable-item" data-name="capcut pro">
-                    <span class="apk-badge">APK/APP</span>
-                    <img src="https://i.ibb.co/k2c525tM/Screenshot-20261011-020158.png" alt="CapCut Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <span class="apk-badge">PRO</span>
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=150" alt="CapCut Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">CapCut Pro</div>
                 </a>
                 <!-- Picsart Pro -->
                 <a href="https://www.mediafire.com/file/5zal530p95un6ka/Picsart.apk/file" target="_blank" class="apk-card searchable-item" data-name="picsart pro">
+                    <span class="apk-badge">PRO</span>
                     <img src="https://images.unsplash.com/photo-1626544827763-d516dce335e2?w=150" alt="Picsart Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">Picsart Pro</div>
                 </a>
+                <!-- InShot Pro -->
+                <a href="https://www.mediafire.com/file/wu5wstgennmvsg6/InShot-v2.243.1555-MOD-%2528Getmodsapk.com%2529.apk/file" target="_blank" class="apk-card searchable-item" data-name="inshot pro">
+                    <span class="apk-badge">PRO</span>
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=150" alt="InShot Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <div class="apk-name">InShot Pro</div>
+                </a>
+                <!-- PixelLab -->
+                <a href="https://www.mediafire.com/file/lc1skuflx7ks9uh/Pixel_lab.apk/file" target="_blank" class="apk-card searchable-item" data-name="pixellab">
+                    <span class="apk-badge">EDITOR</span>
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=150" alt="PixelLab" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <div class="apk-name">PixelLab</div>
+                </a>
+                <!-- Remini Pro -->
+                <a href="https://www.mediafire.com/file/xuhs5mgyzhbbqd4/Remini-v3.7.1464.202525521-MOD-OTR-%2528Getmodsapk.com%2529.apk/file" target="_blank" class="apk-card searchable-item" data-name="remini pro">
+                    <span class="apk-badge">AI</span>
+                    <img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=150" alt="Remini Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <div class="apk-name">Remini Pro</div>
+                </a>
+                <!-- KineMaster Pro -->
+                <a href="https://www.mediafire.com/file/0arjqon2qcidzep/KineMaster-v8.1.13.36552.GP-MOD-OTR-%2528Getmodsapk.com%2529.apk/file" target="_blank" class="apk-card searchable-item" data-name="kinemaster pro">
+                    <span class="apk-badge">PRO</span>
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=150" alt="KineMaster Pro" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
+                    <div class="apk-name">KineMaster Pro</div>
+                </a>
                 <!-- Proxy Server -->
                 <a href="https://www.mediafire.com/file/spbrp1q5dkv3tfb/Proxy_server.apk/file" target="_blank" class="apk-card searchable-item" data-name="proxy server">
+                    <span class="apk-badge">TOOL</span>
                     <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=150" alt="Proxy Server" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">Proxy Server</div>
                 </a>
                 <!-- Free Fire Proxy Server OB55 -->
                 <a href="https://www.mediafire.com/file/mzp6yafxjelnqe5/astute-beta-server-v2.133.1-ob55.apk/file" target="_blank" class="apk-card searchable-item" data-name="free fire proxy server ob55">
-                    <span class="apk-badge">APK/APP</span>
+                    <span class="apk-badge">GAME</span>
                     <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=150" alt="Free Fire Proxy Server OB55" class="apk-icon" onerror="this.src='https://i.ibb.co/305886X/boy-artwork.jpg'">
                     <div class="apk-name">Free Fire Proxy Server OB55</div>
                 </a>
@@ -791,7 +806,6 @@
             });
         }
 
-        // Stylish Name Generator Logic
         function generateNames() {
             let val = document.getElementById('nameInput').value.trim();
             let resBox = document.getElementById('nameResult');
@@ -815,7 +829,6 @@
             resBox.style.display = 'block';
         }
 
-        // Free Fire Sensitivity Finder Logic
         function findSensitivity() {
             let phone = document.getElementById('phoneInput').value.trim().toLowerCase();
             let resBox = document.getElementById('sensResult');
@@ -871,4 +884,4 @@
     </script>
 </body>
     </html>
-            
+    
